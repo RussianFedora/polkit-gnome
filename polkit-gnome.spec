@@ -1,7 +1,7 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
 Version: 0.92
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
@@ -10,6 +10,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: gtk2-devel
 BuildRequires: polkit-devel >= 0.92
 BuildRequires: desktop-file-utils
+BuildRequires: intltool
 
 # Tecnically we should have
 #
@@ -49,6 +50,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libexecdir}/*
 
 %changelog
+* Tue Jun  9 2009 Matthias Clasen <mclasen@redhat.com> - 0.9.2-3
+- Fix BuildRequires
+
 * Tue Jun 09 2009 David Zeuthen <davidz@redhat.com> - 0.92-2
 - Change license to LGPLv2+
 - Remove Requires: gnome-session
