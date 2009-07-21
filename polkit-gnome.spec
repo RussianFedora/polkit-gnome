@@ -1,7 +1,7 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
 Version: 0.93
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
@@ -43,6 +43,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libexecdir}/*
 
 %changelog
+* Mon Jul 20 2009 David Zeuthen <davidz@redhat.com> - 0.93-2
+- Rebuild
+
 * Mon Jul 20 2009 David Zeuthen <davidz@redhat.com> - 0.93-1
 - Update to 0.93
 
