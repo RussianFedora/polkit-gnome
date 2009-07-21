@@ -1,23 +1,16 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
-Version: 0.92
-Release: 3%{?dist}
+Version: 0.93
+Release: 1%{?dist}
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
 Source0: http://hal.freedesktop.org/releases/%{name}-%{version}.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: gtk2-devel
-BuildRequires: polkit-devel >= 0.92
+BuildRequires: polkit-devel >= 0.93
 BuildRequires: desktop-file-utils
 BuildRequires: intltool
-
-# Tecnically we should have
-#
-#  Requires: gnome-session
-#
-# for %{_datadir}/gnome/autostart but since e.g. XFCE wants to avoid
-# too many GNOME dependencies avoid doing that.
 
 %description
 polkit-gnome provides an authentication agent for PolicyKit
@@ -35,8 +28,8 @@ rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 
 desktop-file-install --delete-original                   \
-  --dir $RPM_BUILD_ROOT%{_datadir}/gnome/autostart                      \
-  $RPM_BUILD_ROOT%{_datadir}/gnome/autostart/polkit-gnome-authentication-agent-1.desktop
+  --dir $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart                      \
+  $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
 
 %find_lang polkit-gnome-1
 
@@ -46,10 +39,13 @@ rm -rf $RPM_BUILD_ROOT
 %files -f polkit-gnome-1.lang
 %defattr(-,root,root,-)
 %doc COPYING AUTHORS README
-%{_datadir}/gnome/autostart/*
+%{_sysconfdir}/xdg/autostart/*
 %{_libexecdir}/*
 
 %changelog
+* Mon Jul 20 2009 David Zeuthen <davidz@redhat.com> - 0.93-1
+- Update to 0.93
+
 * Tue Jun  9 2009 Matthias Clasen <mclasen@redhat.com> - 0.9.2-3
 - Fix BuildRequires
 
