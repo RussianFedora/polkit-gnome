@@ -1,7 +1,7 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
 Version: 0.93
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
@@ -43,6 +43,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libexecdir}/*
 
 %changelog
+* Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.93-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
 * Mon Jul 20 2009 David Zeuthen <davidz@redhat.com> - 0.93-2
 - Rebuild
 
