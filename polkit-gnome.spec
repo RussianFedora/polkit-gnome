@@ -1,7 +1,7 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
 Version: 0.94
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
@@ -11,6 +11,7 @@ BuildRequires: gtk2-devel
 BuildRequires: polkit-devel >= 0.94
 BuildRequires: desktop-file-utils
 BuildRequires: intltool
+Requires: polkit >= 0.94
 
 %description
 polkit-gnome provides an authentication agent for PolicyKit
@@ -79,6 +80,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Aug 29 2009 Matthias Clasen <mclasen@redhat.com> - 0.94-3
+- Require a new enough polkit (#517479)
+
 * Sat Aug 29 2009 Matthias Clasen <mclasen@redhat.com> - 0.94-2
 - Show in KDE, too (#519674)
 
