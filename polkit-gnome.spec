@@ -1,7 +1,7 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
 Version: 0.94
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
@@ -52,6 +52,7 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 desktop-file-install --delete-original                   \
   --dir $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart                      \
+  --add-only-show-in KDE \
   $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
 
 %find_lang polkit-gnome-1
@@ -78,6 +79,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Aug 29 2009 Matthias Clasen <mclasen@redhat.com> - 0.94-2
+- Show in KDE, too (#519674)
+
 * Wed Aug 12 2009 David Zeuthen <davidz@redhat.com> - 0.94-1
 - Update to upstream release 0.94
 
