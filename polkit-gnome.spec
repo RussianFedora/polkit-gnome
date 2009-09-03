@@ -1,7 +1,7 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
 Version: 0.94
-Release: 3%{?dist}
+Release: 4%{?dist}
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
@@ -53,7 +53,7 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 desktop-file-install --delete-original                   \
   --dir $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart                      \
-  --add-only-show-in KDE \
+  --remove-only-show-in GNOME \
   $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
 
 %find_lang polkit-gnome-1
@@ -80,6 +80,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Sep  2 2009 Matthias Clasen <mclasen@redhat.com> - 0.94-4
+- Just remove the OnlyShowIn, it turns out everybody wants this
+
 * Sat Aug 29 2009 Matthias Clasen <mclasen@redhat.com> - 0.94-3
 - Require a new enough polkit (#517479)
 
