@@ -1,17 +1,20 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
 Version: 0.95
-Release: 0.git20090913%{?dist}
+Release: 0.git20090913.1%{?dist}
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
 Source0: http://hal.freedesktop.org/releases/%{name}-%{version}.git20090913.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: gtk2-devel
-BuildRequires: polkit-devel >= 0.94
+BuildRequires: polkit-devel >= 0.95
 BuildRequires: desktop-file-utils
 BuildRequires: intltool
-Requires: polkit >= 0.94
+BuildRequires: dbus-glib-devel
+BuildRequires: gobject-introspection-devel
+
+Requires: polkit >= 0.95
 
 %description
 polkit-gnome provides an authentication agent for PolicyKit
@@ -82,6 +85,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Sep 13 2009 David Zeuthen <davidz@redhat.com> - 0.95-0.git20090913.1
+- Update BR
+
 * Sun Sep 13 2009 David Zeuthen <davidz@redhat.com> - 0.95-0.git20090913
 - Update to git snapshot
 - Turn on GObject introspection
