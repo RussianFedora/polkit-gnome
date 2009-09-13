@@ -1,11 +1,11 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
-Version: 0.94
-Release: 4%{?dist}
+Version: 0.95
+Release: 0.git20090913%{?dist}
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
-Source0: http://hal.freedesktop.org/releases/%{name}-%{version}.tar.bz2
+Source0: http://hal.freedesktop.org/releases/%{name}-%{version}.git20090913.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: gtk2-devel
 BuildRequires: polkit-devel >= 0.94
@@ -67,12 +67,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/xdg/autostart/*
 %{_libexecdir}/*
 %{_libdir}/lib*.so.*
+%{_libdir}/girepository-1.0/*.typelib
 
 %files devel
 %defattr(-,root,root,-)
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/*
+%{_datadir}/gir-1.0/*.gir
 
 %files docs
 %defattr(-,root,root,-)
@@ -80,6 +82,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Sep 13 2009 David Zeuthen <davidz@redhat.com> - 0.95-0.git20090913
+- Update to git snapshot
+- Turn on GObject introspection
+
 * Wed Sep  2 2009 Matthias Clasen <mclasen@redhat.com> - 0.94-4
 - Just remove the OnlyShowIn, it turns out everybody wants this
 
