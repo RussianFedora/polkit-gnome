@@ -1,7 +1,7 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
 Version: 0.95
-Release: 0.git20090913.2%{?dist}
+Release: 0.git20090913.3%{?dist}
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
@@ -14,6 +14,9 @@ BuildRequires: intltool
 BuildRequires: dbus-glib-devel
 BuildRequires: gobject-introspection-devel
 BuildRequires: gir-repository-devel
+
+Obsoletes: PolicyKit-gnome
+Obsoletes: PolicyKit-gnome-libs
 
 Requires: polkit >= 0.95
 
@@ -86,6 +89,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Sep 14 2009 David Zeuthen <davidz@redhat.com> - 0.95-0.git20090913.3
+- Obsolete old PolicyKit-gnome packages
+
 * Sun Sep 13 2009 David Zeuthen <davidz@redhat.com> - 0.95-0.git20090913.2
 - Update BR
 
