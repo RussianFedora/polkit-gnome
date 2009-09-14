@@ -1,7 +1,7 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
 Version: 0.95
-Release: 0.git20090913.3%{?dist}
+Release: 0.git20090913.4%{?dist}
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
@@ -15,8 +15,10 @@ BuildRequires: dbus-glib-devel
 BuildRequires: gobject-introspection-devel
 BuildRequires: gir-repository-devel
 
-Obsoletes: PolicyKit-gnome
-Obsoletes: PolicyKit-gnome-libs
+Obsoletes: PolicyKit-gnome <= 0.10
+Provides: PolicyKit-gnome = 0.11
+Obsoletes: PolicyKit-gnome-libs <= 0.10
+Provides: PolicyKit-gnome-libs = 0.11
 
 Requires: polkit >= 0.95
 
@@ -31,6 +33,10 @@ Requires: %name = %{version}-%{release}
 Requires: %name-docs = %{version}-%{release}
 Requires: pkgconfig
 Requires: polkit-devel
+Obsoletes: PolicyKit-gnome-devel <= 0.10
+Provides: PolicyKit-gnome-devel = 0.11
+Obsoletes: PolicyKit-gnome-demo <= 0.10
+Provides: PolicyKit-gnome-demo = 0.11
 
 %description devel
 Development files for polkit-gnome.
@@ -89,6 +95,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Sep 14 2009 David Zeuthen <davidz@redhat.com> - 0.95-0.git20090913.4
+- Refine how Obsolete: is used and also add Provides: (thanks Jesse
+  Keating and nim-nim)
+
 * Mon Sep 14 2009 David Zeuthen <davidz@redhat.com> - 0.95-0.git20090913.3
 - Obsolete old PolicyKit-gnome packages
 
