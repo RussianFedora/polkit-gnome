@@ -1,11 +1,15 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
 Version: 0.95
-Release: 0.git20090913.5%{?dist}
+Release: 0.git20090913.6%{?dist}
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
 Source0: http://hal.freedesktop.org/releases/%{name}-%{version}.git20090913.tar.bz2
+
+# https://bugzilla.gnome.org/show_bug.cgi?id=597346
+Patch0: whitespace-leak.patch
+
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: gtk2-devel
 BuildRequires: polkit-devel >= 0.95
@@ -54,6 +58,7 @@ Development documentation for polkit-gnome.
 
 %prep
 %setup -q
+%patch0 -p1 -b .whitespace-leak
 
 %build
 %configure --enable-gtk-doc
@@ -97,6 +102,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Oct  7 2009 Matthias Clasen <mclasen@redhat.com> - 0.95.0.git20090913.6
+- Prevent the statusicon from eating whitespace
+
 * Mon Sep 14 2009 David Zeuthen <davidz@redhat.com> - 0.95-0.git20090913.5
 - add Provides: PolicyKit-authentication-agent to satify what PolicyKit-gnome
   also provided
