@@ -1,7 +1,7 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
 Version: 0.95
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
@@ -72,6 +72,11 @@ desktop-file-install --delete-original                   \
   --remove-only-show-in GNOME \
   $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
 
+%if 0%{?fedora} > 12
+echo 'NotShowIn=KDE;' >>$RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
+desktop-file-validate $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
+%endif
+
 %find_lang polkit-gnome-1
 
 %clean
@@ -98,6 +103,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jan  5 2009 Kevin Kofler <Kevin@tigcc.ticalc.org> - 0.95-2
+- Don't autostart in KDE on F13+
+
 * Fri Nov 13 2009 David Zeuthen <davidz@redhat.com> - 0.95-1
 - Update to release 0.95
 - Drop upstreamed patches
