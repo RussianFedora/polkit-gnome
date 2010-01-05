@@ -103,7 +103,7 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Tue Jan  5 2009 Kevin Kofler <Kevin@tigcc.ticalc.org> - 0.95-2
+* Tue Jan  5 2010 Kevin Kofler <Kevin@tigcc.ticalc.org> - 0.95-2
 - Don't autostart in KDE on F13+
 
 * Fri Nov 13 2009 David Zeuthen <davidz@redhat.com> - 0.95-1
