@@ -1,7 +1,7 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
-Version: 0.95
-Release: 2%{?dist}
+Version: 0.96
+Release: 1%{?dist}
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
@@ -57,7 +57,7 @@ Development documentation for polkit-gnome.
 %setup -q
 
 %build
-%configure --enable-gtk-doc
+%configure --enable-gtk-doc --disable-introspection
 make
 
 %install
@@ -88,14 +88,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/xdg/autostart/*
 %{_libexecdir}/*
 %{_libdir}/lib*.so.*
-%{_libdir}/girepository-1.0/*.typelib
+# %{_libdir}/girepository-1.0/*.typelib
 
 %files devel
 %defattr(-,root,root,-)
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/*
-%{_datadir}/gir-1.0/*.gir
+# %{_datadir}/gir-1.0/*.gir
 
 %files docs
 %defattr(-,root,root,-)
@@ -103,6 +103,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Jan 15 2010 David Zeuthen <davidz@redhat.com> - 0.96-1
+- Update to release 0.96
+- Disable introspection support for the time being
+
 * Tue Jan  5 2010 Kevin Kofler <Kevin@tigcc.ticalc.org> - 0.95-2
 - Don't autostart in KDE on F13+
 
