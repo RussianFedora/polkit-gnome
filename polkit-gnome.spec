@@ -56,7 +56,7 @@ Development documentation for polkit-gnome.
 
 %prep
 %setup -q
-%patch0 -p2 -b .new-lock-icons
+%patch0 -p1 -b .new-lock-icons
 
 %build
 %configure --enable-gtk-doc --disable-introspection
