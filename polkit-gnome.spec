@@ -1,13 +1,12 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
 Version: 0.96
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
 Source0: http://hal.freedesktop.org/releases/%{name}-%{version}.tar.bz2
 
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: gtk2-devel
 BuildRequires: polkit-devel >= 0.95-1
 BuildRequires: desktop-file-utils
@@ -24,6 +23,9 @@ Provides: PolicyKit-gnome-libs = 0.11
 Provides: PolicyKit-authentication-agent
 
 Requires: polkit >= 0.95
+
+# use icons that exist in current icon theme
+Patch0: new-lock-icons.patch
 
 %description
 polkit-gnome provides an authentication agent for PolicyKit
@@ -55,13 +57,13 @@ Development documentation for polkit-gnome.
 
 %prep
 %setup -q
+%patch0 -p2 -b .new-lock-icons
 
 %build
 %configure --enable-gtk-doc --disable-introspection
 make
 
 %install
-rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.a
@@ -72,15 +74,14 @@ desktop-file-install --delete-original                   \
   --remove-only-show-in GNOME \
   $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
 
-%if 0%{?fedora} > 12
 echo 'NotShowIn=KDE;' >>$RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
 desktop-file-validate $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
-%endif
 
 %find_lang polkit-gnome-1
 
-%clean
-rm -rf $RPM_BUILD_ROOT
+%post -p /sbin/ldconfig
+
+%postun -p /sbin/ldconfig
 
 %files -f polkit-gnome-1.lang
 %defattr(-,root,root,-)
@@ -103,6 +104,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Jun 14 2010 Matthias Clasen <mclasen@redhat.com> - 0.96-2
+- Use lock icons that exist in current icon theme
+- Minor spec file fixes
+
 * Fri Jan 15 2010 David Zeuthen <davidz@redhat.com> - 0.96-1
 - Update to release 0.96
 - Disable introspection support for the time being
