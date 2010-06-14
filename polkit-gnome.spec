@@ -13,7 +13,6 @@ BuildRequires: desktop-file-utils
 BuildRequires: intltool
 BuildRequires: dbus-glib-devel
 BuildRequires: gobject-introspection-devel
-BuildRequires: gir-repository-devel
 
 Obsoletes: PolicyKit-gnome <= 0.10
 Provides: PolicyKit-gnome = 0.11
