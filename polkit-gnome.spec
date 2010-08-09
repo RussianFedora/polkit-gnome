@@ -1,17 +1,16 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
-Version: 0.96
-Release: 2%{?dist}
+Version: 0.97
+Release: 1%{?dist}
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
 Source0: http://hal.freedesktop.org/releases/%{name}-%{version}.tar.bz2
 
-BuildRequires: gtk2-devel
+BuildRequires: gtk2-devel >= 2.25.11
 BuildRequires: polkit-devel >= 0.95-1
 BuildRequires: desktop-file-utils
 BuildRequires: intltool
-BuildRequires: dbus-glib-devel
 BuildRequires: gobject-introspection-devel
 
 Obsoletes: PolicyKit-gnome <= 0.10
@@ -103,6 +102,9 @@ desktop-file-validate $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/polkit-gnome-a
 
 
 %changelog
+* Mon Aug 09 2010 David Zeuthen <davidz@redhat.com> - 0.97-1
+- Update to 0.97
+
 * Mon Jun 14 2010 Matthias Clasen <mclasen@redhat.com> - 0.96-2
 - Use lock icons that exist in current icon theme
 - Minor spec file fixes
