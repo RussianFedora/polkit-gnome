@@ -1,7 +1,7 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
 Version: 0.97
-Release: 1%{?dist}
+Release: 3%{?dist}
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
@@ -22,9 +22,6 @@ Provides: PolicyKit-gnome-libs = 0.11
 Provides: PolicyKit-authentication-agent
 
 Requires: polkit >= 0.95
-
-# use icons that exist in current icon theme
-Patch0: new-lock-icons.patch
 
 %description
 polkit-gnome provides an authentication agent for PolicyKit
@@ -56,7 +53,6 @@ Development documentation for polkit-gnome.
 
 %prep
 %setup -q
-%patch0 -p1 -b .new-lock-icons
 
 %build
 %configure --enable-gtk-doc --disable-introspection
@@ -103,6 +99,9 @@ desktop-file-validate $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/polkit-gnome-a
 
 
 %changelog
+* Mon Aug 09 2010 David Zeuthen <davidz@redhat.com> - 0.97-3
+- Nuke patch that was committed upstream
+
 * Mon Aug 09 2010 David Zeuthen <davidz@redhat.com> - 0.97-2
 - Fix up BRs
 
