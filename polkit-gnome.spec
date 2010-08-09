@@ -7,7 +7,8 @@ URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
 Source0: http://hal.freedesktop.org/releases/%{name}-%{version}.tar.bz2
 
-BuildRequires: gtk2-devel >= 2.25.11
+BuildRequires: gtk2-devel
+BuildRequires: glib2-devel >= 2.25.11
 BuildRequires: polkit-devel >= 0.95-1
 BuildRequires: desktop-file-utils
 BuildRequires: intltool
@@ -102,6 +103,9 @@ desktop-file-validate $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/polkit-gnome-a
 
 
 %changelog
+* Mon Aug 09 2010 David Zeuthen <davidz@redhat.com> - 0.97-2
+- Fix up BRs
+
 * Mon Aug 09 2010 David Zeuthen <davidz@redhat.com> - 0.97-1
 - Update to 0.97
 
