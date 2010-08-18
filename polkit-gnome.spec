@@ -1,7 +1,7 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
 Version: 0.97
-Release: 4%{?dist}
+Release: 5%{?dist}
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
@@ -99,6 +99,9 @@ desktop-file-validate $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/polkit-gnome-a
 
 
 %changelog
+* Wed Aug 18 2010 Matthias Clasen <mclasen@redhat.com> - 0.97-5
+- Rebuild to work around bodhi limitations
+
 * Mon Aug 09 2010 David Zeuthen <davidz@redhat.com> - 0.97-4
 - Bump polkit req to 0.97 since we have to chainbuild anyway. Sigh.
 
