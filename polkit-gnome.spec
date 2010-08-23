@@ -1,7 +1,7 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
 Version: 0.97
-Release: 5%{?dist}
+Release: 6%{?dist}
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
@@ -32,7 +32,6 @@ Summary: Development files for polkit-gnome
 Group: Development/Libraries
 Requires: %name = %{version}-%{release}
 Requires: %name-docs = %{version}-%{release}
-Requires: pkgconfig
 Requires: polkit-devel
 Obsoletes: PolicyKit-gnome-devel <= 0.10
 Provides: PolicyKit-gnome-devel = 0.11
@@ -46,7 +45,6 @@ Development files for polkit-gnome.
 Summary: Development documentation for polkit-gnome
 Group: Development/Libraries
 Requires: %name-devel = %{version}-%{release}
-Requires: gtk-doc
 
 %description docs
 Development documentation for polkit-gnome.
@@ -95,10 +93,13 @@ desktop-file-validate $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/polkit-gnome-a
 
 %files docs
 %defattr(-,root,root,-)
-%{_datadir}/gtk-doc/html/*
+%{_datadir}/gtk-doc
 
 
 %changelog
+* Mon Aug 23 2010 Matthias Clasen <mclasen@redhat.com> - 0.97-6
+- Co-own /usr/share/gtk-doc (#604411)
+
 * Wed Aug 18 2010 Matthias Clasen <mclasen@redhat.com> - 0.97-5
 - Rebuild to work around bodhi limitations
 
