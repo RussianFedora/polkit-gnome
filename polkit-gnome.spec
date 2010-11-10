@@ -1,7 +1,7 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
 Version: 0.97
-Release: 6%{?dist}
+Release: 7%{?dist}
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
@@ -13,6 +13,7 @@ BuildRequires: polkit-devel >= 0.97-1
 BuildRequires: desktop-file-utils
 BuildRequires: intltool
 BuildRequires: gobject-introspection-devel
+BuildRequires: gtk-doc
 
 Obsoletes: PolicyKit-gnome <= 0.10
 Provides: PolicyKit-gnome = 0.11
@@ -97,6 +98,9 @@ desktop-file-validate $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/polkit-gnome-a
 
 
 %changelog
+* Wed Nov 10 2010 Dan Horák <dan[at]danny.cz> - 0.97-7
+- Add gtk-doc as BR
+
 * Mon Aug 23 2010 Matthias Clasen <mclasen@redhat.com> - 0.97-6
 - Co-own /usr/share/gtk-doc (#604411)
 
