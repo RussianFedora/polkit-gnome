@@ -1,13 +1,14 @@
 Summary: PolicyKit integration for the GNOME desktop
 Name: polkit-gnome
 Version: 0.97
-Release: 4%{?dist}
+Release: 4%{?dist}.1
 License: LGPLv2+
 URL: http://www.freedesktop.org/wiki/Software/PolicyKit
 Group: Applications/System
 Source0: http://hal.freedesktop.org/releases/%{name}-%{version}.tar.bz2
 
 BuildRequires: gtk2-devel
+BuildRequires: gtk-doc
 BuildRequires: glib2-devel >= 2.25.11
 BuildRequires: polkit-devel >= 0.97-1
 BuildRequires: desktop-file-utils
@@ -69,7 +70,7 @@ desktop-file-install --delete-original                   \
   --remove-only-show-in GNOME \
   $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
 
-echo 'NotShowIn=KDE;' >>$RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
+echo 'NotShowIn=KDE;LXDE;' >>$RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
 desktop-file-validate $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
 
 %find_lang polkit-gnome-1
@@ -99,6 +100,9 @@ desktop-file-validate $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/polkit-gnome-a
 
 
 %changelog
+* Sat Oct 30 2010 Arkady L. Shane <ashejn@yandex-team.ru> - 0.97-4.1
+- Not show in LXDE
+
 * Mon Aug 09 2010 David Zeuthen <davidz@redhat.com> - 0.97-4
 - Bump polkit req to 0.97 since we have to chainbuild anyway. Sigh.
 
